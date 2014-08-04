@@ -1,12 +1,30 @@
 function callMap() {
 //var map = L.map('map').setView([40, 11], 2);
 	//var map = L.map('map').setView([22.5, 0], 2);
-	var map = L.map('map').setView([37.74, -122.4], 11);
+	var map = L.map('map').setView([37.78, -122.25], 11);
 
 	var stamen = L.tileLayer('http://{s}.tile.stamen.com/toner/{z}/{x}/{y}.png', {attribution: 'Imagery &copy; <a href="http://maps.stamen.com/#toner/8/51.072/14.584" rel="author" target="_blank"> Stamen</a>'}).addTo(map);
 
 	var cloudmade = L.tileLayer('http://{s}.tile.cloudmade.com/{key}/{styleId}/256/{z}/{x}/{y}.png', {attribution: 'Map data &copy; 2011 OpenStreetMap contributors, Imagery &copy; 2011 CloudMade, Data-overlay: <a href="http://earthquake.usgs.gov/earthquakes/" rel="author" target="_blank">&copy; USGS</a>',key: 'BC9A493B41014CAABB98F0471D759707',styleId: 22677	});
-
+    /*
+    //var myText = L.tileLayer({attribution: 'Imagery &copy; <a href="http://maps.stamen.com/#toner/8/51.072/14.584" rel="author" target="_blank"> Stamen</a>'}).addTo(map)
+    var textLatLng = [37.87836087, -122.1837911];  
+    var myTextLabel = L.marker(textLatLng, {
+        icon: L.divIcon({
+            className: 'header',   // Set class for CSS styling
+            html: 'A Text Label'
+        }),
+        //draggable: true,       // Allow label dragging...?
+        zIndexOffset: 1000     // Make appear above other map features
+    });
+    map.addLayer(myTextLabel);
+    */
+    //var labelLocation = new L.LatLng(37.905628, -122.067423);
+    //var labelTitle = new L.LabelOverlay(labelLocation, '<b>GERMANY</b>');
+    //map.addLayer(labelTitle);
+    //var myText = L.divIcon({className: 'header', html: '<h2><span>Hello!</span><h2b>'});
+    //L.marker([50.505, 30.57], {icon: myText}).addTo(map);
+    //L.addTo(map)
 
 	/* Initialize the SVG layer */
 	map._initPathRoot()    

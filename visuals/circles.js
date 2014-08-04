@@ -48,7 +48,7 @@ function callCircles() {
 
 
 		// ---------- END OF DATA MANIPULATION
-		var margin = {top: 25, right: 20, bottom: 30, left: 20},
+		var margin = {top: 22, right: 20, bottom: 30, left: 20},
     		width = 1200 - margin.left - margin.right,
     		height = 800 - margin.top - margin.bottom;
 

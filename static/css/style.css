@@ -2,16 +2,68 @@
 body, html {
     height:100%;
 }
+/*
+#container {
+    float:left;
+    width: 83%;
+}
+#overview {
+    float:left;
+    background:red;
+    width:13%;
+}
 #map {
-    width: 85%;
+    width: 70%;
     height: 98%;
     float:right;
 }
 #circleVis {
-    float:left;
+    float:right;
     background: black;
-    width:15%;
+    width:17%;
     height: 98%;
+}
+*/
+#map {
+    height:750px;
+}
+.container {
+    overflow: hidden;
+}
+.right {
+    float: right;
+    width: 200px;
+    border-top:2px solid black;
+    border-right:2px solid black;
+    border-bottom:2px solid black;
+
+    height:750px;
+}
+.left {
+    float: left;
+    width: 200px;
+    border-top:2px solid black;
+    border-left:2px solid black;
+    border-bottom:2px solid black;
+    border-right:2px solid black;
+
+    height:750px;
+}
+.middle {
+    margin: 0 200px;
+    border-top: 2px solid black;;
+}
+h2 span {
+    color: white;
+    font: bold 34px/55px Helvetica, Sans-Serif;
+    letter-spacing: -1px;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 5px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    zIndexOffset: 1000;
+    line-height:40px;
 }
 .cityNodes {
 	opacity:1;
@@ -42,19 +94,22 @@ body, html {
 .link {
 	fill: none;
 	stroke: steelblue; 
-    stroke-opacity:0.7; 
-
-/*  in order: x offset, y offset, blur size, spread size, color 
-    box-shadow: 120px 80px 40px 20px #0ff; */
-/*  blur size and spread size are optional (they default to 0) */
-    
+    stroke-opacity:0.7;    
 }
 .dot {
-    fill:white;
+    /* fill:white; */
+    fill:black;
 }
 .label {
-    fill:white;
+    /* fill:white; */
+    fill:black;
     font-size: 12px;
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
     font-weight: 300;
+}
+.overviewParagraph {
+    font-size: 12px;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+    font-weight: 300;
+    padding:10px;
 }
