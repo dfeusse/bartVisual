@@ -1,7 +1,7 @@
 function callCircles() {
-	d3.json("../../dataWrangling/bartDataAndLookup.json", function(lookupData) {
+	d3.json("dataWrangling/bartDataAndLookup.json", function(lookupData) {
 	//d3.json("us_taxa.json", function(collection) {
-		d3.json("../../data/bartApiLatLonDataOrderedPassenger.json", function(rawData) {
+		d3.json("data/bartApiLatLonDataOrderedPassenger.json", function(rawData) {
 		/* Add a LatLng object to each item in the dataset */
 		var data = rawData.root.stations.station;
 		console.log('DATA')
@@ -48,7 +48,7 @@ function callCircles() {
 
 
 		// ---------- END OF DATA MANIPULATION
-		var margin = {top: 20, right: 20, bottom: 30, left: 40},
+		var margin = {top: 25, right: 20, bottom: 30, left: 20},
     		width = 1200 - margin.left - margin.right,
     		height = 800 - margin.top - margin.bottom;
 

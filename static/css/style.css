@@ -3,11 +3,14 @@ body, html {
     height:100%;
 }
 #map {
-    /*
-		width: 960px;
-		height: 500px;
-    */
     width: 85%;
+    height: 98%;
+    float:right;
+}
+#circleVis {
+    float:left;
+    background: black;
+    width:15%;
     height: 98%;
 }
 .cityNodes {
@@ -46,12 +49,12 @@ body, html {
 /*  blur size and spread size are optional (they default to 0) */
     
 }
-#map {
-    float:left;
+.dot {
+    fill:white;
 }
-#circleVis {
-    float:right;
-    background: black;
-    width:15%;
-    height: 98%;
+.label {
+    fill:white;
+    font-size: 12px;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+    font-weight: 300;
 }
