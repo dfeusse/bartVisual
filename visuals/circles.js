@@ -46,8 +46,14 @@ function callCircles() {
 		data.reverse()
 		console.log(data)
 
-
 		// ---------- END OF DATA MANIPULATION
+		var formatComma = d3.format("0,000");
+		var tip = d3.tip()
+		    .attr('class', 'd3-tip')
+		    .html(function(d) { return 'station: ' + '<span>' + d.name + '</span>' + '<br>' + '<span>' + formatComma(d.stationEntries) + '</span>' + ' passengers entered' })
+		    //.html(function(d) { return d.name; })
+		    .offset([-12, 0]);
+
 		var margin = {top: 22, right: 20, bottom: 30, left: 20},
     		width = 1200 - margin.left - margin.right,
     		height = 800 - margin.top - margin.bottom;
@@ -70,6 +76,8 @@ function callCircles() {
 		  .append("g")
 		    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+		var callTooltip = svg.call(tip);
+
 		var elem = svg.selectAll('.dots')
 			.data(data)
 			.enter()
@@ -85,6 +93,18 @@ function callCircles() {
 				else if (i<4){ return i*21 + 13}
 				else { return i * 15 + 34}
 			})
+			.on("mouseenter", function() { 
+                d3.select(this).transition().duration(500)
+                    //.attr("fill", "blue")
+                    .attr("stroke", "steelblue")
+                    .attr("stroke-width", 2)
+                })
+            .on("mouseleave", function() { 
+                d3.select(this).transition().duration(500)
+                    //.attr("opacity", 0)
+                    //.attr("r", 6)
+                    .attr("stroke-width", 0)
+                });
 			//.attr("cy", function(d,i) {return (i * (radiusScale(d.stationEntries)*2.4)+20) + 5})
 		
 		var text = elem.append("text")
@@ -98,8 +118,8 @@ function callCircles() {
 			})
 			.text(function(d,i) {return d.name})
 
-
-
+		circles.on('mouseover', tip.show);
+		circles.on('mouseout', tip.hide);
 
 
 	}) // first data call

@@ -30,9 +30,16 @@ function callMap() {
 	map._initPathRoot()    
 
 
-   // var myGlow = glow("myGlow").rgb("#0f0").stdDeviation(3);
+    // var myGlow = glow("myGlow").rgb("#0f0").stdDeviation(3);
     var myGlow = glow("myGlow").rgb("#fff").stdDeviation(2);
     
+    // tooltips
+    var formatComma = d3.format("0,000");
+        var tip = d3.tip()
+            .attr('class', 'd3-tip')
+            .html(function(d) { return 'station: ' + '<span>' + d.name + '</span>' + '<br>' + '<span>' + formatComma(d.stationEntries) + '</span>' + ' passengers entered' + '<br>' + '<span>' + d.address + '</span>' + '<br>' + '<span>' + d.city + '</span>' + ' ' + '<span>' + d.state + '</span>' + ' ' + '<span>' + d.zipcode + '</span>'})
+            //.html(function(d) { return d.name; })
+            .offset([-12, 0]);
 
 	/* We simply pick up the SVG from the map object */
 	var svg = d3.select("#map").select("svg"),
@@ -40,6 +47,8 @@ function callMap() {
 
 	var arcGroup = g.append('g').call(myGlow);
 	var pointGroup = g.append('g');
+
+    var callTooltips = pointGroup.call(tip);
 	
 d3.json("dataWrangling/bartDataAndLookup.json", function(lookupData) {
 	//d3.json("us_taxa.json", function(collection) {
@@ -58,7 +67,7 @@ d3.json("dataWrangling/bartDataAndLookup.json", function(lookupData) {
             //_.where(listOfPlays, {author: "Shakespeare"});
             //var lookupValue = fullData[i].abbr;
             //console.log(lookupValue)
-            console.log(data[i].abbr)
+            //console.log(data[i].abbr)
             var matchingObj = _.where(lookupData, {Abbr: data[i].abbr})
             // Entries: 166349
             //console.log(matchingObj[0].Entries)
@@ -423,14 +432,16 @@ var feature = pointGroup.append("g")
                     //.attr("fill", "blue")
                     .attr("r", 14)
                 })
-             .on("mouseleave", function() { 
+            .on("mouseleave", function() { 
                 d3.select(this).transition().duration(500)
                     //.attr("opacity", 0)
                     .attr("r", 6)
                 });
 
 	      	//.style("stroke-width", function(d) { return Math.sqrt(d.value); });
-
+    //initialize tooltips
+    feature.on('mouseover', tip.show);
+    feature.on('mouseout', tip.hide);
 	/*
         // Standard enter / update 
         var pathArcs = arcGroup.selectAll(".arc")
