@@ -8,18 +8,38 @@
     <script src="static/js/underscore.min.js"></script> 
  	<script src="static/js/topojson.v1.min.js"></script>
  	<script src="static/js/leaflet.js"></script>
+    <script src="static/js/glow.js"></script>
 
  	<style>
 
  		@import url(http://cdn.leafletjs.com/leaflet-0.5/leaflet.css);
 
+        body, html {
+            height:100%;
+        }
  		#map {
+            /*
  			width: 960px;
  			height: 500px;
+            */
+            width: 95%;
+            height: 100%;
  		}
  		.cityNodes {
- 			opacity:0.6;
+ 			opacity:1;
             /* transition:-webkit-transform 0.5s, fill 0.5s; */
+            /* fill:#d9d9d9; */
+            fill:steelblue; 
+            /*
+            -webkit-filter: drop-shadow(0 0 140px 90px #0ff );
+            filter: drop-shadow(0 0 140px 90px #0ff );
+            */
+/*
+            box-shadow:
+            0 0 60px 30px #fff,  
+            0 0 100px 60px #f0f, 
+            0 0 140px 90px #0ff; outer cyan */
+            
  		}
         .cityNodes:hover {
             opacity:1;
@@ -33,14 +53,22 @@
  		}
  		.link {
  			fill: none;
-  			stroke: red;
-            stroke-opacity:0.6;
+  			stroke: steelblue; 
+            stroke-opacity:0.7; 
+
+        /*  in order: x offset, y offset, blur size, spread size, color 
+            box-shadow: 120px 80px 40px 20px #0ff; */
+        /*  blur size and spread size are optional (they default to 0) */
+            
  		}
 
  	</style>
 </head>
 <body>
-    <p id="map"></p>
-    <script src="vis.js"></script>
+    <div id="map"></div>
+    <script src="visuals/map.js"></script>
+    <script type="text/javascript">
+        callMap();
+    </script>
 </body>
 </html>
