@@ -15,29 +15,27 @@
 </head>
 <body>
     <div class='container'>
-        <div class='right' id="circleVis">
-    
-        </div>
+        <div class='right' id="circleVis"></div>
         <div class='left' id="overview">
             <div>
                 <h2><span>BART <br> entries, 2013</span></h2>
             </div>
-            <div style="margin-top:100px">
+            <div class="overviewParagraphContainer">
                 <span class="overviewParagraph">
-                    test test test
-                </span>
+                    Data is from 2013 for each BART station in the Bay Area.
+                    <br><br>
+                    The circle visual on the far right shows passenger data for those who have entered each station. It is clear the top stations are in downtown San Francisco.
+                    <br><br>
+                    The map shows passenger data between each stop. When zoomed in, the most traffic is between the stops in downtown San Francisco, and across the bridge to Oakland. The assumption made was that half the passengers who entered each stop went one direction while the other half went the opposite way. The map tile was created by Stamen.
+                    <br><br>
+                    It is also clear to see other trends and activity. Orinda, for example, does not have many passengers enter on it. It’s an affluent neighborhood, and most people probably have cars even though it’d be easy to use BART to commute into the city.
+                
             </div>
         </div>
-        <div class='middle' id="map">
-            
-        </div>
+        <div class='middle' id="map">  </div>
     </div>
-
     <script src="visuals/map.js"></script>
     <script src="visuals/circles.js"></script>
-    <script type="text/javascript">
-        callMap();
-        callCircles();
-    </script>
+    <script src="visuals/main.js"></script>
 </body>
 </html>

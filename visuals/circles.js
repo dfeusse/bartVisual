@@ -1,57 +1,14 @@
-function callCircles() {
-	d3.json("dataWrangling/bartDataAndLookup.json", function(lookupData) {
-	//d3.json("us_taxa.json", function(collection) {
-		d3.json("data/bartApiLatLonDataOrderedPassenger.json", function(rawData) {
-		/* Add a LatLng object to each item in the dataset */
-		var data = rawData.root.stations.station;
-		console.log('DATA')
-		console.log(data)
-
-        console.log('lookupData')
-        console.log(lookupData)
-
-        // now have data, lookupData & apiData
-        for(var i=0; i<data.length; i++){
-            //_.where(listOfPlays, {author: "Shakespeare"});
-            //var lookupValue = fullData[i].abbr;
-            //console.log(lookupValue)
-            //console.log(data[i].abbr)
-            var matchingObj = _.where(lookupData, {Abbr: data[i].abbr})
-            // Entries: 166349
-            //console.log(matchingObj[0].Entries)
-            data[i].stationEntries = matchingObj[0].Entries;
-        }
-
-        // now have data, lookupData & apiData
-        for(var i=0; i<data.length-1; i++){
-            data[i].entriesSplit = data[i].stationEntries/2 + data[i+1].stationEntries/2
-        }
-
-		//collection.features.forEach(function(d) {
-		data.forEach(function(d) {
-			//d.LatLng = new L.LatLng(d.geometry.coordinates[1],d.geometry.coordinates[0])
-			//"gtfs_latitude": "37.792976",
-            //"gtfs_longitude": "-122.396742",
-			//[-122.4,37.78]
-			d.LatLng = new L.LatLng(d.gtfs_latitude,d.gtfs_longitude)
-            d.totalPassengers = d.leavingPassengers + d.arrivingPassengers
-		})
-
-		//console.log(collection.features.length)
-		console.log('NEW DATA')
-		console.log(data)
+function callCircles(data) {
 
 		// sort data so biggest nodes on top
 		var data = _.sortBy(data, function(obj){ return +obj.stationEntries });
 		data.reverse()
 		console.log(data)
 
-		// ---------- END OF DATA MANIPULATION
 		var formatComma = d3.format("0,000");
 		var tip = d3.tip()
 		    .attr('class', 'd3-tip')
 		    .html(function(d) { return 'station: ' + '<span>' + d.name + '</span>' + '<br>' + '<span>' + formatComma(d.stationEntries) + '</span>' + ' passengers entered' })
-		    //.html(function(d) { return d.name; })
 		    .offset([-12, 0]);
 
 		var margin = {top: 22, right: 20, bottom: 30, left: 20},
@@ -95,17 +52,13 @@ function callCircles() {
 			})
 			.on("mouseenter", function() { 
                 d3.select(this).transition().duration(500)
-                    //.attr("fill", "blue")
                     .attr("stroke", "steelblue")
                     .attr("stroke-width", 2)
                 })
             .on("mouseleave", function() { 
                 d3.select(this).transition().duration(500)
-                    //.attr("opacity", 0)
-                    //.attr("r", 6)
                     .attr("stroke-width", 0)
                 });
-			//.attr("cy", function(d,i) {return (i * (radiusScale(d.stationEntries)*2.4)+20) + 5})
 		
 		var text = elem.append("text")
 			.attr("class", "label")
@@ -120,10 +73,6 @@ function callCircles() {
 
 		circles.on('mouseover', tip.show);
 		circles.on('mouseout', tip.hide);
-
-
-	}) // first data call
-}) // second data call
 
 } // end of callCircles()
 

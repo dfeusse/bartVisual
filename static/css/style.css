@@ -51,7 +51,8 @@ body, html {
 }
 .middle {
     margin: 0 200px;
-    border-top: 2px solid black;;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
 }
 h2 span {
     color: white;
@@ -108,10 +109,13 @@ h2 span {
     font-weight: 300;
 }
 .overviewParagraph {
-    font-size: 12px;
+    font-size: 14px;
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
     font-weight: 300;
+}
+.overviewParagraphContainer {
     padding:10px;
+    margin-top:87px;
 }
 
 .d3-tip {
