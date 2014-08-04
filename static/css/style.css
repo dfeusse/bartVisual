@@ -1,0 +1,57 @@
+@import url(http://cdn.leafletjs.com/leaflet-0.5/leaflet.css);
+body, html {
+    height:100%;
+}
+#map {
+    /*
+		width: 960px;
+		height: 500px;
+    */
+    width: 85%;
+    height: 98%;
+}
+.cityNodes {
+	opacity:1;
+    /* transition:-webkit-transform 0.5s, fill 0.5s; */
+    /* fill:#d9d9d9; */
+    fill:steelblue; 
+    /*
+    -webkit-filter: drop-shadow(0 0 140px 90px #0ff );
+    filter: drop-shadow(0 0 140px 90px #0ff );
+    */
+/*
+    box-shadow:
+    0 0 60px 30px #fff,  
+    0 0 100px 60px #f0f, 
+    0 0 140px 90px #0ff; outer cyan */
+    
+}
+.cityNodes:hover {
+    opacity:1;
+    cursor:default; 
+    /* fill: steelblue; 
+    -webkit-transform: scale(1.2, 1.2); */
+}
+.arc {
+	fill: none;
+	stroke: #000;
+}
+.link {
+	fill: none;
+	stroke: steelblue; 
+    stroke-opacity:0.7; 
+
+/*  in order: x offset, y offset, blur size, spread size, color 
+    box-shadow: 120px 80px 40px 20px #0ff; */
+/*  blur size and spread size are optional (they default to 0) */
+    
+}
+#map {
+    float:left;
+}
+#circleVis {
+    float:right;
+    background: black;
+    width:15%;
+    height: 98%;
+}
